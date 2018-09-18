@@ -1,0 +1,57 @@
+<!-- -->
+<ion-content class="auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding text-center>
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Selket</strong> S'enregistrer
+      </h2>
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form"  #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)" >
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Nom
+        </ion-label>
+        <ion-input type="text" #first_name="ngModel" [(ngModel)]="user.first_name" name="first_name" placeholder=""required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Prénom
+        </ion-label>
+        <ion-input type="text" #last_name="ngModel" [(ngModel)]="user.last_name" name="last_name" placeholder=""required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email"  #email="ngModel" [(ngModel)]="user.email" name="email" [pattern] = "emailPattern" placeholder="" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Mot de passe
+        </ion-label>
+        <ion-input type="password" #password="ngModel" [(ngModel)]="user.password" name="password"  required placeholder="" ></ion-input>
+      </ion-item>
+    
+
+    <div margin-top>
+      <button ion-button block color="dark" tappable type="submit" [disabled]="!userRegistrationForm.valid">
+       S'enregistrer
+      </button>
+    </div>
+  </form>
+  <div text-center margin-top>
+      <span ion-text color="primary" tappable (click)="login()">I have an account</span>
+    </div>
+  </div>
+</ion-content>

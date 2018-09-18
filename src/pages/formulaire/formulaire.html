@@ -1,0 +1,212 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Formulaire
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page5">
+  <form id="formulaireForm" #formulaireForm="ngForm" (ngSubmit)="goMap(formulaireForm)">
+    
+    <ion-item id="formulaire-range3">
+      <ion-range pin="true" step="1000" min="0" max="100000"  color="positive" value="0" name="amount" [(ngModel)]="client.credit.amount" #amount="ngModel">
+        <ion-label range-left>
+          Montant crédit
+        </ion-label>
+      </ion-range>
+      <ion-label>Montant : {{client.credit.amount}} DT</ion-label>
+    
+      
+      
+    </ion-item>
+    <ion-item id="formulaire-select1">
+      <ion-label>
+        Travail
+      </ion-label>
+      <ion-select name="job_type" [(ngModel)]="client.job.job_type"  #job_type="ngModel" (ngModelChange)="jobChange($event)">
+        <ion-option [value]="cadre">
+          Cadre
+        </ion-option>
+        <ion-option [value]="ouvrier">
+          Ouvrier
+        </ion-option>
+        <ion-option [value]="independant">
+          Indépendant
+        </ion-option>
+        <ion-option [value]="chomeur">
+          Chômeur
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item id="formulaire-select2">
+      <ion-label>
+        J'ai un compte bancaire
+      </ion-label>
+      <ion-select name="has_bank_account" [(ngModel)]="client.has_bank_account" #has_bank_account="ngModel">
+        <ion-option [value]=true>
+          Oui
+        </ion-option>
+        <ion-option [value]=false>
+          Non
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item id="formulaire-select3" >
+      <ion-label>
+        Secteur
+      </ion-label>
+      <ion-select name="job_sector" [(ngModel)]="client.job.job_sector"  #job_sector="ngModel" >
+        <ion-option [value]="Transport">
+          Transport
+        </ion-option>
+        <ion-option [value]="sante">
+          Santé
+        </ion-option>
+        <ion-option [value]="technologie">
+          Technologie et communication
+        </ion-option>
+        <ion-option [value]="etudiant">
+          Etudiant
+        </ion-option>
+        <ion-option [value]="education">
+          Education
+        </ion-option>
+        <ion-option [value]="justice">
+          Justice
+        </ion-option>
+        <ion-option [value]="industrie">
+          Industrie
+        </ion-option>
+        <ion-option [value]="energe">
+          Energie
+        </ion-option>
+        <ion-option [value]="agriculture">
+          Agriculture
+        </ion-option>
+        <ion-option [value]="artisanat">
+          Artisanat
+        </ion-option>
+        <ion-option [value]="mecanique">
+          Mécanique
+        </ion-option>
+        <ion-option [value]="logistique">
+          Logistique
+        </ion-option>
+        <ion-option [value]="environnement">
+          Environnement
+        </ion-option>
+        <ion-option [value]="electricite">
+          Electricité
+        </ion-option>
+        <ion-option [value]="agroalimentaire">
+          Agroalimentaire
+        </ion-option>
+        <ion-option [value]="service">
+          Services au entreprises
+        </ion-option>
+        <ion-option [value]="finance">
+          Finance
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="formulaire-select4">
+      <ion-label >
+        Motif
+      </ion-label>
+      <ion-select name="credit_reason" [(ngModel)]="client.credit.credit_reason" #credit_reason="ngModel" >
+        <ion-option [value]="personnel">
+          Personnel
+        </ion-option>
+        <ion-option [value]="professionnel">
+          Professionnel
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="formulaire-range5">
+      <ion-range pin="true" min="0" max="10000" step="50" color="positive" value="50" name="salary" [(ngModel)]="client.job.salary" #salary="ngModel">
+        <ion-label range-left>
+          Salaire
+        </ion-label>
+        
+      </ion-range>
+      <ion-label>Montant : {{client.job.salary}} DT</ion-label>
+    </ion-item>
+
+    <ion-item id="formulaire-select2">
+      <ion-label>
+        Mon état matrimonial
+      </ion-label>
+      <ion-select name="status" [(ngModel)]="client.marital_status.status" #status="ngModel" >
+        <ion-option [value]="maried">
+          Marié
+        </ion-option>
+        <ion-option [value]="single">
+          Célibataie
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item id="formulaire-checkbox4">
+      <ion-label>
+        Voiture
+      </ion-label>
+      <ion-checkbox name="owns_car" [(ngModel)]="client.material_owns.owns_car" #owns_car="ngModel"></ion-checkbox>
+    </ion-item>
+    <ion-item id="formulaire-checkbox6">
+      <ion-label>
+        Aménagement
+      </ion-label>
+      <ion-checkbox name="owns_house" [(ngModel)]="client.material_owns.owns_house" #owns_house="ngModel"></ion-checkbox>
+    </ion-item>
+
+    <ion-item id="formulaire-range4">
+      <ion-range min="0" max="10" step="1" color="positive" name="children_number" [(ngModel)]="client.marital_status.children_number" #children_number="ngModel" value="0" >
+        <ion-label range-left>
+          Nombre d'enfant
+        </ion-label>
+      </ion-range>
+      <ion-label>Montant : {{client.marital_status.children_number}} enfant(s)</ion-label>
+    </ion-item>
+
+    <ion-item id="formulaire-select6">
+      <ion-label>Vous êtes</ion-label>
+      <ion-select name="tenant_house" [(ngModel)]="client.material_owns.tenant_house" #tenant_house="ngModel" >
+        <ion-option [value]="locataire">
+          Locataire
+        </ion-option>
+        <ion-option [value]="proprietaire"> 
+          propriétaire
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item id="formulaire-range4">
+      <ion-range min="0" max="2000" step="50" color="positive" name="tenant_amount" [(ngModel)]="client.material_owns.tenant_amount" #tenant_amount="ngModel" value="0" >
+        <ion-label range-left>
+          Montant de location
+        </ion-label>
+      </ion-range>
+      <ion-label>Montant : {{client.material_owns.tenant_amount}} DT</ion-label>
+    </ion-item>
+
+    <button ion-button color="positive" (click)="popView()">
+      Précédent
+    </button>
+    <button ion-button color="positive" style="float: right" type="submit">
+      Suivant
+    </button>
+  </form>
+</ion-content>
