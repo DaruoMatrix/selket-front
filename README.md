@@ -1,3 +1,4 @@
-# Ionic 3 Start Theme
+# Selket Ionic 3 APP
+The front end mobile application for Selket.
 
-Ionic 3 Start Theme with 10 Pages, mock data, providers samples, Storage, Http and more...
+
